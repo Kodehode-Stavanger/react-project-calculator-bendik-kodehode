@@ -4,3 +4,11 @@
     grid-template-rows: repeat(5, 1fr);
     max-width: 200px;
 }
+
+.container :nth-last-child(2) {
+    grid-column: 1 / span 2;
+}
+
+.container :nth-last-child(1) {
+    grid-column: 3 / span 2;
+}
