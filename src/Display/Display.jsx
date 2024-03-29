@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { DisplayContext } from "../App";
 import style from "./Display.module.css"
 
 function Display() {
-    const [display, setDisplay] = useState("0");
+
+    const [display, setDisplay] = useContext(DisplayContext);
 
     return (
         <div>
