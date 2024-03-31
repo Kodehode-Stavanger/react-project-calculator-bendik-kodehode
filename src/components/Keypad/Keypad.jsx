@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { DisplayContext } from "../App";
+import { DisplayContext } from "../../App";
 import Button from "../Button/Button";
 import style from "./Keypad.module.css"
 
@@ -15,7 +15,7 @@ function Keypad() {
 
     function handleClick(e) {
         // console.log(e.target.value);
-        if (parseInt(e.target.value)) {
+        if (parseInt(e.target.value) || e.target.value === "0") {
             console.log("Number!");
             return;
         } else if (e.target.value === "0") {
