@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { DisplayContext } from "../../App";
+import { CalcContext } from "../../App";
 import Button from "../Button/Button";
 import style from "./Keypad.module.css"
 
@@ -11,18 +11,17 @@ function Keypad() {
         ".", 0, "/", "x",
         "RESET", "="
     ]
-    const [display, setDisplay] = useContext(DisplayContext);
+    const {input, setInput, setResult} = useContext(CalcContext);
 
     function handleClick(e) {
         // console.log(e.target.value);
-        if (parseInt(e.target.value) || e.target.value === "0") {
+        let pressedKey = e.target.value;
+
+        if (parseInt(pressedKey) || pressedKey === "0") {
             console.log("Number!");
-            return;
-        } else if (e.target.value === "0") {
-            console.log("Zero!");
-            return;
         }
-        switch (e.target.value) {
+
+        switch (pressedKey) {
             case "+":
                 console.log("Plus!");
                 break;
@@ -31,11 +30,24 @@ function Keypad() {
                 break;
             case "x":
                 console.log("Times!");
+                pressedKey = "*";
                 break;
-            case "/":
+            case "/": 
                 console.log("Split!");
                 break;
+            case "DEL":
+                break;
+            case "RESET":
+                setInput([]);
+                setResult(0);
+                return;
         }
+
+        setInput(i => [...i, pressedKey]);
+        setResult(input)
+        console.log(input);
+
+
     }
 
     return (

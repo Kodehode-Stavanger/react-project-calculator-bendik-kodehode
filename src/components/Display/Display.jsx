@@ -1,14 +1,14 @@
 import { useContext, useState } from "react";
-import { DisplayContext } from "../App";
+import { CalcContext } from "../../App";
 import style from "./Display.module.css"
 
 function Display() {
 
-    const [display, setDisplay] = useContext(DisplayContext);
+    const {result} = useContext(CalcContext);
 
     return (
         <div>
-            <p>{display}</p>
+            <p>{result}</p>
         </div>
     )
 }

@@ -1,17 +1,18 @@
 import React, { useState, useContext } from "react";
-import Display from "./Display/Display";
-import Keypad from "./Keypad/Keypad";
+import Display from "./components/Display/Display";
+import Keypad from "./components/Keypad/Keypad";
 
-export const DisplayContext = React.createContext();
+export const CalcContext = React.createContext();
 
 function App() {
-  const [display, setDisplay] = useState("0");
+  const [input, setInput] = useState([]);
+  const [result, setResult] = useState(0);
 
   return <>
-    <DisplayContext.Provider value={[display, setDisplay]}>
+    <CalcContext.Provider value={{input, setInput, result, setResult}}>
       <Display/>
       <Keypad/>
-    </DisplayContext.Provider>
+    </CalcContext.Provider>
   </>;
 }
 
