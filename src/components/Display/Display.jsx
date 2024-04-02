@@ -1,14 +1,23 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { CalcContext } from "../../App";
 import style from "./Display.module.css"
 
 function Display() {
 
-    const {result} = useContext(CalcContext);
+    const {input, result} = useContext(CalcContext);
+
+    // console.log("displayInput: ", input);
+    let toShow = "0";
+    if (input[0]) toShow = input;
+    if (result.length) {
+        toShow = result;
+        console.log("Results ran!");
+    }
 
     return (
         <div>
-            <p>{result}</p>
+            {/* <p>{input[0] > 0 ? input : "0"}</p> */}
+            <p>{toShow}</p>
         </div>
     )
 }

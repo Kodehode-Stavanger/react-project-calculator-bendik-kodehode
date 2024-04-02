@@ -6,7 +6,7 @@ export const CalcContext = React.createContext();
 
 function App() {
   const [input, setInput] = useState([]);
-  const [result, setResult] = useState(0);
+  const [result, setResult] = useState("");
 
   return <>
     <CalcContext.Provider value={{input, setInput, result, setResult}}>
