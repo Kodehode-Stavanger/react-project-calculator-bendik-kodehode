@@ -4,6 +4,9 @@ import Button from "../Button/Button";
 import style from "./Keypad.module.css"
 
 function Keypad() {
+    const {input, setInput, result, setResult} = useContext(CalcContext);
+
+    const operators = ["+", "-", "/", "*"];
     const keys = [
         7, 8, 9, "DEL",
         4, 5, 6, "+",
@@ -11,58 +14,85 @@ function Keypad() {
         ".", 0, "/", "x",
         "RESET", "="
     ]
-    const {input, setInput, result, setResult} = useContext(CalcContext);
+
+    function compute(a, b, operator) {
+        const computing = {
+            '+': (x, y) => x + y,
+            '-': (x, y) => x - y,
+            '/': (x, y) => x / y,
+            'x': (x, y) => x * y,
+        };
+        if (operator in computing) {
+            return computing[operator](parseFloat(a), parseFloat(b));
+        } else {
+            setResult("Error")
+            return;
+        }
+    }
 
     function handleClick(e) {
-        // console.log(e.target.value);
         let pressedKey = e.target.value;
-        const operators = ["+", "-", "/", "*"];
-        const equation = {
-            num1: 0,
-            num2: 0,
-            operator: "",
-        }
-
-        let {num1, num2, operator} = equation;
-
-        function compute(a, b, operator) {
-            const computing = {
-                '+': (x, y) => x + y,
-                '-': (x, y) => x - y,
-                'x': (x, y) => x * y,
-                '/': (x, y) => x / y,
-            };
-            if (operator in operators) {
-                return computing[operator](parseFloat(a), parseFloat(b));
-            } else {
-                setResult("Error 402")
-                return;
-            }
-        }
 
         if (parseInt(pressedKey) || pressedKey === "0") {
         }
+        
+        const checkForOperator = () => {
+        const index = input.findIndex(e => operators.includes(e));
+        if (index !== -1) {
+            return {
+                exists: true,
+                operator: input[index]
+            };
+        } else return {
+            exists: false,
+            operator: null
+        }
+        }
+        
+        const getResult = () => {
+            const {exists, operator} = checkForOperator();
+            if (exists) {
+                const operatorPos = input.findIndex(e => e === operator);
+                const firstNum = input.slice(0, operatorPos).join("");
+                const secondNum = input.slice((operatorPos + 1)).join("");
+                return compute(firstNum, secondNum, operator);
+            }
+        }
 
+        // If an operator is pressed
         if (operators.includes(pressedKey)) {
-            operator = pressedKey;
-            const operatorPos = input.findIndex(e => operators.includes(e))
-            num1 = input.slice(0, operatorPos).join("");
-            num2 = input.slice((operatorPos + 1)).join("");
-            console.log("operator: ", operator);
-            console.log("num1: ", num1);
-            console.log("num2: ", num2);
-            // setResult(equation.num1 + )
+            // const operatorPos = input.findIndex(e => operators.includes(e))
+            // If input already contains operator
+            if (input.some(e => operators.includes(e))) {
+                console.log("Already includes operator!");
+                // const firstNum = input.slice(0, operatorPos).join("");
+                // const secondNum = input.slice((operatorPos + 1)).join("");
+                // setCalc(c => ({...c, num1: firstNum, num2: secondNum }))
+
+
+                // const result = compute(num1, num2, operator)
+                // setInput([`${result}`]);
+            }
+            // setCalc(c => ({...c, operator: pressedKey}));
         }
 
         switch (pressedKey) {
             case ".":
                 if (input.includes(".")) return;
                 break;
+
             case "=":
                 // if (input.includes())
-                compute(input)
-                // setResult()
+                if (checkForOperator()) {
+                    setInput([getResult()])
+                }
+                // console.log(eval("25+25"));
+                pressedKey = "";
+                console.log("getResult: ", getResult());
+                // const results = getResult()
+                // setInput(i => {[...i, getResult()]})
                 break;
+
             case "DEL":
                 setInput(i => i.slice(0, -1));
                 return;
@@ -72,8 +102,14 @@ function Keypad() {
                 setResult("");
                 return;
         }
+        console.log("input: ", input);
+
+        if (input[0] === "0") {
+            console.log("input[0]");
+            pressedKey = "";
+        }
+
         if (pressedKey) setInput(i => [...i, pressedKey]);
-        // console.log("input: ", input);
     }
 
     return (
