@@ -1,19 +1,7 @@
-import React, { useState, useContext } from "react";
-import Display from "./components/Display/Display";
-import Keypad from "./components/Keypad/Keypad";
-
-export const CalcContext = React.createContext();
+import Calculator from "./components/Calculator/Calculator";
 
 function App() {
-  const [input, setInput] = useState([]);
-  const [result, setResult] = useState("");
-
-  return <>
-    <CalcContext.Provider value={{input, setInput, result, setResult}}>
-      <Display/>
-      <Keypad/>
-    </CalcContext.Provider>
-  </>;
+  return <Calculator/>;
 }
 
 export default App;

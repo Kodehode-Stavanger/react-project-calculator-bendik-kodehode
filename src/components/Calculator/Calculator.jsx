@@ -1,10 +1,11 @@
-import { useContext, useState } from "react";
-import { CalcContext } from "../../App";
+import { useState } from "react";
+import Display from "../Display/Display";
 import Button from "../Button/Button";
-import style from "./Keypad.module.css"
+import style from "./Calculator.module.css";
 
-function Keypad() {
-    const {input, setInput, result, setResult} = useContext(CalcContext);
+function Calculator() {
+    const [input, setInput] = useState([]);
+    const [result, setResult] = useState("");
 
     const operators = ["+", "-", "/", "*"];
     const keys = [
@@ -37,16 +38,16 @@ function Keypad() {
         }
         
         const checkForOperator = () => {
-        const index = input.findIndex(e => operators.includes(e));
-        if (index !== -1) {
-            return {
-                exists: true,
-                operator: input[index]
-            };
-        } else return {
-            exists: false,
-            operator: null
-        }
+            const index = input.findIndex(e => operators.includes(e));
+            if (index !== -1) {
+                return {
+                    exists: true,
+                    operator: input[index]
+                };
+            } else return {
+                exists: false,
+                operator: null
+            }
         }
         
         const getResult = () => {
@@ -114,14 +115,17 @@ function Keypad() {
 
     return (
         <div className={style.container}>
-            {keys.map((e, i) => 
-                <Button 
-                    handleClick={e => handleClick(e)} 
-                    value={e} 
-                    key={i}/>
-            )}
+            <Display input={input} result={result}/>
+            <div className={style.keypad}>
+                {keys.map((e, i) => 
+                    <Button 
+                        handleClick={e => handleClick(e)} 
+                        value={e} 
+                        key={i}/>
+                )}
+            </div>
         </div>
     )
 }
 
-export default Keypad;
+export default Calculator;
