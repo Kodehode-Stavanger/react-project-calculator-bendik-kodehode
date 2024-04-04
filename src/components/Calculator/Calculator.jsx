@@ -31,50 +31,43 @@ function Calculator() {
         }
     }
 
+    const checkForOperator = () => {
+        const index = input.findIndex(e => operators.includes(e));
+        if (index !== -1) {
+            return {
+                exists: true,
+                operator: input[index]
+            };
+        } else return {
+            exists: false,
+            operator: null
+        }
+    }
+    
+    const getResult = () => {
+        const {exists, operator} = checkForOperator();
+        if (exists) {
+            const operatorPos = input.findIndex(e => e === operator);
+            const firstNum = input.slice(0, operatorPos).join("");
+            const secondNum = input.slice((operatorPos + 1)).join("");
+            return compute(firstNum, secondNum, operator);
+        }
+    }
+
     function handleClick(e) {
         let pressedKey = e.target.value;
 
         if (parseInt(pressedKey) || pressedKey === "0") {
         }
         
-        const checkForOperator = () => {
-            const index = input.findIndex(e => operators.includes(e));
-            if (index !== -1) {
-                return {
-                    exists: true,
-                    operator: input[index]
-                };
-            } else return {
-                exists: false,
-                operator: null
-            }
-        }
-        
-        const getResult = () => {
-            const {exists, operator} = checkForOperator();
-            if (exists) {
-                const operatorPos = input.findIndex(e => e === operator);
-                const firstNum = input.slice(0, operatorPos).join("");
-                const secondNum = input.slice((operatorPos + 1)).join("");
-                return compute(firstNum, secondNum, operator);
-            }
-        }
+
 
         // If an operator is pressed
         if (operators.includes(pressedKey)) {
-            // const operatorPos = input.findIndex(e => operators.includes(e))
             // If input already contains operator
             if (input.some(e => operators.includes(e))) {
-                console.log("Already includes operator!");
-                // const firstNum = input.slice(0, operatorPos).join("");
-                // const secondNum = input.slice((operatorPos + 1)).join("");
-                // setCalc(c => ({...c, num1: firstNum, num2: secondNum }))
 
-
-                // const result = compute(num1, num2, operator)
-                // setInput([`${result}`]);
             }
-            // setCalc(c => ({...c, operator: pressedKey}));
         }
 
         switch (pressedKey) {
@@ -83,15 +76,10 @@ function Calculator() {
                 break;
 
             case "=":
-                // if (input.includes())
                 if (checkForOperator()) {
                     setInput([getResult()])
                 }
-                // console.log(eval("25+25"));
                 pressedKey = "";
-                console.log("getResult: ", getResult());
-                // const results = getResult()
-                // setInput(i => {[...i, getResult()]})
                 break;
 
             case "DEL":
