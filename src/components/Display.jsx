@@ -1,9 +1,9 @@
-import style from "./Display.module.css"
+import "../index.css"
 
 function Display({input, result}) {
     return (
         <div>
-            <p className={style.output}>{input[0] > 0 ? input.join("") : "0"}</p>
+            <p className="output">{input[0] > 0 ? input.join("") : "0"}</p>
             {/* <p>{toShow}</p> */}
         </div>
     )

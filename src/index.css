@@ -10,3 +10,61 @@ body {
     justify-content: center;
     align-items: center;
 }
+
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    max-width: 200px;
+    padding: 10px;
+    background-color: #232b43;
+    gap: 10px;
+}
+
+.keypad :nth-last-child(2) {
+    grid-column: 1 / span 2;
+}
+
+.keypad :nth-last-child(1) {
+    grid-column: 3 / span 2;
+}
+
+.titleContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.button {
+    /* background-color: rgb(238, 238, 238); */
+    background-color: red;
+    padding: 5px 15px;
+    border: none;
+}
+
+.output {
+    display: flex;
+    justify-content: flex-end;   
+}
+
+.contentContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.inputContainer {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.labelContainer {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.themeWrapper {
+    display: flex;
+    flex-direction: column;
+    width: 50px;
+}

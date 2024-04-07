@@ -1,7 +1,9 @@
 import { useState } from "react";
-import Display from "../Display/Display";
-import Button from "../Button/Button";
-import style from "./Calculator.module.css";
+// import style from "./Calculator.module.css";
+import "../index.css";
+import Display from "./Display";
+import Button from "./Button";
+import Themes from "./Themes";
 
 function Calculator() {
     const [input, setInput] = useState([]);
@@ -102,17 +104,23 @@ function Calculator() {
     }
 
     return (
-        <div className={style.container}>
-            <Display input={input} result={result}/>
-            <div className={style.keypad}>
-                {keys.map((e, i) => 
-                    <Button 
-                        handleClick={e => handleClick(e)} 
-                        value={e} 
-                        key={i}/>
-                )}
+        <>
+            <div className="titleContainer">
+                <h2>calc</h2>
+                <Themes/>
             </div>
-        </div>
+            <div className="contentContainer">
+                <Display input={input} result={result}/>
+                <div className="keypad">
+                    {keys.map((e, i) => 
+                        <Button 
+                            handleClick={e => handleClick(e)} 
+                            value={e} 
+                            key={i}/>
+                    )}
+                </div>
+            </div>
+        </>
     )
 }
 
