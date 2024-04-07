@@ -1,26 +1,28 @@
 import { useState } from "react";
 import "../index.css";
 
-function Themes() {
-    const [currentTheme, setCurrentTheme] = useState("dark")
+function ToggleThemes() {
+    const [currentTheme, setCurrentTheme] = useState("default")
 
     function handleThemeChange(e) {
+        console.log("themechange: ", e.target.value);
         setCurrentTheme(e.target.value)
     }
 
     return (
         <div className="themeWrapper">
             <div className="labelContainer">
-                <label htmlFor="dark">1</label>
+                <label htmlFor="default">1</label>
                 <label htmlFor="light">2</label>
-                <label htmlFor="fancy">3</label>
+                <label htmlFor="dark">3</label>
             </div>
             <div className="inputContainer">
                 <input 
                     type="radio" 
                     id="dark" 
                     name="theme" 
-                    value="dark" 
+                    value="default" 
+                    checked={currentTheme === "default"}
                     onChange={handleThemeChange}/>
                 <input 
                     type="radio" 
@@ -32,11 +34,11 @@ function Themes() {
                     type="radio" 
                     id="fancy" 
                     name="theme" 
-                    value="fancy"
+                    value="dark"
                     onChange={handleThemeChange}/>
             </div>
         </div>
     )
 }
 
-export default Themes;
+export default ToggleThemes;

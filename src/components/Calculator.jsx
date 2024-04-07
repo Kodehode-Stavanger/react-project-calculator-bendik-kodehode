@@ -3,13 +3,13 @@ import { useState } from "react";
 import "../index.css";
 import Display from "./Display";
 import Button from "./Button";
-import Themes from "./Themes";
+import ToggleThemes from "./ToggleThemes";
 
 function Calculator() {
     const [input, setInput] = useState([]);
     const [result, setResult] = useState("");
 
-    const operators = ["+", "-", "/", "*"];
+    const operators = ["+", "-", "/", "x"];
     const keys = [
         7, 8, 9, "DEL",
         4, 5, 6, "+",
@@ -28,7 +28,7 @@ function Calculator() {
         if (operator in computing) {
             return computing[operator](parseFloat(a), parseFloat(b));
         } else {
-            setResult("Error")
+            setInput("Invalid Operator")
             return;
         }
     }
@@ -59,16 +59,11 @@ function Calculator() {
     function handleClick(e) {
         let pressedKey = e.target.value;
 
-        if (parseInt(pressedKey) || pressedKey === "0") {
-        }
-        
-
-
-        // If an operator is pressed
+        // Overwrite selected operator
         if (operators.includes(pressedKey)) {
-            // If input already contains operator
-            if (input.some(e => operators.includes(e))) {
-
+            if (operators.includes(input[input.length - 1])) {
+                setInput(prevInput => [...prevInput.slice(0, -1), pressedKey]);
+                return;
             }
         }
 
@@ -78,7 +73,8 @@ function Calculator() {
                 break;
 
             case "=":
-                if (checkForOperator()) {
+                const { exists } = checkForOperator();
+                if (exists) {
                     setInput([getResult()])
                 }
                 pressedKey = "";
@@ -93,7 +89,6 @@ function Calculator() {
                 setResult("");
                 return;
         }
-        console.log("input: ", input);
 
         if (input[0] === "0") {
             console.log("input[0]");
@@ -107,7 +102,7 @@ function Calculator() {
         <>
             <div className="titleContainer">
                 <h2>calc</h2>
-                <Themes/>
+                <ToggleThemes/>
             </div>
             <div className="contentContainer">
                 <Display input={input} result={result}/>

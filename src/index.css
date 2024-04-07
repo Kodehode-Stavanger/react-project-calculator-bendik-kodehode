@@ -17,7 +17,6 @@ body {
     grid-template-rows: repeat(5, 1fr);
     max-width: 200px;
     padding: 10px;
-    background-color: #232b43;
     gap: 10px;
 }
 
@@ -36,8 +35,6 @@ body {
 }
 
 .button {
-    /* background-color: rgb(238, 238, 238); */
-    background-color: red;
     padding: 5px 15px;
     border: none;
 }
