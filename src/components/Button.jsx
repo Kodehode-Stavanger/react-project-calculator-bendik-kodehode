@@ -1,8 +1,10 @@
 import "../index.css"
 
-function Button({value, handleClick}) {
+function Button({value, handleClick, style}) {
+    console.log(style);
+
     return (
-        <button className="button" onClick={handleClick} value={value}>{value}</button>
+        <button style={{backgroundColor: "#EAE3DB"}} className="button" onClick={handleClick} value={value}>{value}</button>
     )
 }
 

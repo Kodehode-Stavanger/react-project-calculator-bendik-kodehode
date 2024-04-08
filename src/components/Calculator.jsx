@@ -3,6 +3,7 @@ import "../index.css";
 import Display from "./Display";
 import Button from "./Button";
 import ToggleThemes from "./ToggleThemes";
+import { themes } from "../assets/themes";
 
 function Calculator() {
     const [input, setInput] = useState([]);
@@ -88,7 +89,6 @@ function Calculator() {
 
             case "RESET":
                 setInput([]);
-                setResult("");
                 return;
         }
 
@@ -105,10 +105,11 @@ function Calculator() {
             </div>
             <div className="contentContainer">
                 <Display input={input}/>
-                <div className="keypad">
+                <div className="keypad" style={{themes}}>
                     {keys.map((e, i) => 
                         <Button 
-                            handleClick={e => handleClick(e)} 
+                            handleClick={e => handleClick(e)}
+                            style={themes[currentTheme]["buttons"]}
                             value={e} 
                             key={i}/>
                     )}
