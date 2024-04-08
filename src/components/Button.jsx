@@ -1,10 +1,25 @@
 import "../index.css"
 
 function Button({value, handleClick, style}) {
-    console.log(style);
+
+    let styleType = "primary";
+
+    if (value === "DEL" || value === "RESET") {
+        styleType = "secondary"
+    } else if (value === "=") {
+        styleType = "tertiary";
+    }
+
+    console.log(style.primary.initial);
 
     return (
-        <button style={{backgroundColor: "#EAE3DB"}} className="button" onClick={handleClick} value={value}>{value}</button>
+        <button 
+            className="button" 
+            onClick={handleClick} 
+            value={value}
+            style={style[styleType].initial}
+            >{value}
+        </button>
     )
 }
 

@@ -1,10 +1,13 @@
 import "../index.css"
 
-function Display({input}) {
+function Display({input, style}) {
+
     return (
         <div>
-            <p className="output">{input[0] > 0 ? input.join("") : "0"}</p>
-            {/* <p>{toShow}</p> */}
+            <p 
+                className="output" 
+                style={style}>
+                    {input[0] > 0 ? input.join("") : "0"}</p>
         </div>
     )
 }

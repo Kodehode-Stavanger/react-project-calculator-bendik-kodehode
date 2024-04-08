@@ -9,6 +9,7 @@ function Calculator() {
     const [input, setInput] = useState([]);
     const [currentTheme, setCurrentTheme] = useState("default");
 
+    const { backgroundColor, primaryFontColor, keypadStyle, displayStyle, buttonStyle } = themes[currentTheme]
 
     const operators = ["+", "-", "/", "x"];
     const keys = [
@@ -95,27 +96,31 @@ function Calculator() {
         if (input[0] === "0") return;
 
         if (pressedKey) setInput(i => [...i, pressedKey]);
+
+        console.log("buttonstyle: ", buttonStyle);
     }
 
     return (
-        <>
-            <div className="titleContainer">
-                <h2>calc</h2>
-                <ToggleThemes currentTheme={currentTheme} setCurrentTheme={setCurrentTheme}/>
-            </div>
-            <div className="contentContainer">
-                <Display input={input}/>
-                <div className="keypad" style={{themes}}>
-                    {keys.map((e, i) => 
-                        <Button 
-                            handleClick={e => handleClick(e)}
-                            style={themes[currentTheme]["buttons"]}
-                            value={e} 
-                            key={i}/>
-                    )}
+        <div className="backgroundContainer" style={{backgroundColor: backgroundColor}}>
+            <div className="wrapper">
+                <div className="titleContainer">
+                    <h2 style={primaryFontColor}>calc</h2>
+                    <ToggleThemes currentTheme={currentTheme} setCurrentTheme={setCurrentTheme}/>
+                </div>
+                <div className="contentContainer">
+                    <Display input={input} style={displayStyle}/>
+                    <div className="keypad" style={keypadStyle} >
+                        {keys.map((e, i) => 
+                            <Button 
+                                handleClick={e => handleClick(e)}
+                                style={buttonStyle}
+                                value={e} 
+                                key={i}/>
+                        )}
+                    </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }
 

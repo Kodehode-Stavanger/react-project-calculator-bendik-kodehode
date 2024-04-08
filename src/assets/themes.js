@@ -1,9 +1,17 @@
 export const themes = {
     default: {
         backgroundColor: "#3B4664",
-        displayColor: "#181F32",
-        keypadColor: "#252D44",
-        buttons: {
+        primaryFontColor: {
+            color: "#FFFFFF"
+        },
+        keypadStyle: {
+            backgroundColor: "#252D44"
+        },
+        displayStyle: {
+            backgroundColor: "#181F32",
+            color: "#FFFFFF" 
+        },
+        buttonStyle: {
             primary: {
                 initial: {
                     backgroundColor: "#EAE3DB",

@@ -11,6 +11,19 @@ body {
     align-items: center;
 }
 
+.backgroundContainer {
+    background-color: red;
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper {
+    width: fit-content;
+}
+
 .keypad {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -37,6 +50,7 @@ body {
 .button {
     padding: 5px 15px;
     border: none;
+    border-radius: 5px;
 }
 
 .output {
