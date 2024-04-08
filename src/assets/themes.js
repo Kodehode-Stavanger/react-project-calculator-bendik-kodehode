@@ -19,7 +19,7 @@ export const themes = {
                     backgroundColor: "#EAE3DB",
                     color: "#474C5E",
                     borderBottom: "3px solid #B4A498"
-                },
+                }
             },
             secondary: {
                 initial: {
@@ -36,12 +36,24 @@ export const themes = {
                     backgroundColor: "#EAE3DB",
                     color: "#474C5E",
                     borderBottom: "3px solid #B4A498"
-                },
+                }
             },
             tertiary: {
-                backgroundColor: "#E96454",
-                color: "#FFFFFF",
-                borderBottom: "3px solid #91261C"
+                initial: {
+                    backgroundColor: "#E96454",
+                    color: "#FFFFFF",
+                    borderBottom: "3px solid #91261C"
+                },
+                hover: {
+                    backgroundColor: "#EAE3DB",
+                    color: "#474C5E",
+                    borderBottom: "3px solid #B4A498"
+                },
+                active: {
+                    backgroundColor: "#EAE3DB",
+                    color: "#474C5E",
+                    borderBottom: "3px solid #B4A498"
+                }
             }
         }
     },

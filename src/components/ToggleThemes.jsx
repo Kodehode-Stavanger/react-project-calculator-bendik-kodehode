@@ -1,10 +1,10 @@
 import { useState } from "react";
 import "../index.css";
 
-function ToggleThemes() {
-    const [currentTheme, setCurrentTheme] = useState("default")
+function ToggleThemes({ currentTheme, setCurrentTheme }) {
 
     function handleThemeChange(e) {
+        console.log(e.target.value);
         setCurrentTheme(e.target.value)
     }
 

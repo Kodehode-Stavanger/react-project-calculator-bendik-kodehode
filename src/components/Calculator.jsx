@@ -6,7 +6,8 @@ import ToggleThemes from "./ToggleThemes";
 
 function Calculator() {
     const [input, setInput] = useState([]);
-    const [result, setResult] = useState("");
+    const [currentTheme, setCurrentTheme] = useState("default");
+
 
     const operators = ["+", "-", "/", "x"];
     const keys = [
@@ -100,7 +101,7 @@ function Calculator() {
         <>
             <div className="titleContainer">
                 <h2>calc</h2>
-                <ToggleThemes/>
+                <ToggleThemes currentTheme={currentTheme} setCurrentTheme={setCurrentTheme}/>
             </div>
             <div className="contentContainer">
                 <Display input={input}/>
