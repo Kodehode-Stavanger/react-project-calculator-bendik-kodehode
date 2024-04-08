@@ -1,5 +1,4 @@
 import { useState } from "react";
-// import style from "./Calculator.module.css";
 import "../index.css";
 import Display from "./Display";
 import Button from "./Button";
@@ -25,25 +24,21 @@ function Calculator() {
             '/': (x, y) => x / y,
             'x': (x, y) => x * y,
         };
-        if (operator in computing) {
-            return computing[operator](parseFloat(a), parseFloat(b));
-        } else {
-            setInput("Invalid Operator")
-            return;
+        try {
+            const result = computing[operator](parseFloat(a), parseFloat(b))
+            return result;
+        } catch (error) { 
+            console.error("Error: ", error.message)
         }
     }
 
     const checkForOperator = () => {
         const index = input.findIndex(e => operators.includes(e));
-        if (index !== -1) {
-            return {
-                exists: true,
-                operator: input[index]
-            };
-        } else return {
-            exists: false,
-            operator: null
-        }
+        // Find index returns "-1" if no results
+        return {
+            exists: index !== -1,
+            operator: index !== -1 ? input[index] : null
+        };
     }
     
     const getResult = () => {
@@ -54,6 +49,10 @@ function Calculator() {
             const secondNum = input.slice((operatorPos + 1)).join("");
             return compute(firstNum, secondNum, operator);
         }
+    }
+
+    const removeLastEntry = () => {
+        setInput(i => i.filter((_, index) => index < i.length - 1))
     }
 
     function handleClick(e) {
@@ -74,14 +73,16 @@ function Calculator() {
 
             case "=":
                 const { exists } = checkForOperator();
-                if (exists) {
-                    setInput([getResult()])
+                exists ? setInput([getResult()]) : setInput(["Missing operator"])
+                try {
+                    console.log(undefinedVariable.property);
+                } catch (error) {
+                    console.error('Error:', error.message);
                 }
-                pressedKey = "";
-                break;
+                return;
 
             case "DEL":
-                setInput(i => i.slice(0, -1));
+                removeLastEntry();
                 return;
 
             case "RESET":
@@ -90,10 +91,7 @@ function Calculator() {
                 return;
         }
 
-        if (input[0] === "0") {
-            console.log("input[0]");
-            pressedKey = "";
-        }
+        if (input[0] === "0") return;
 
         if (pressedKey) setInput(i => [...i, pressedKey]);
     }
@@ -105,7 +103,7 @@ function Calculator() {
                 <ToggleThemes/>
             </div>
             <div className="contentContainer">
-                <Display input={input} result={result}/>
+                <Display input={input}/>
                 <div className="keypad">
                     {keys.map((e, i) => 
                         <Button 

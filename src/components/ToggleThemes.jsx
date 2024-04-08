@@ -5,7 +5,6 @@ function ToggleThemes() {
     const [currentTheme, setCurrentTheme] = useState("default")
 
     function handleThemeChange(e) {
-        console.log("themechange: ", e.target.value);
         setCurrentTheme(e.target.value)
     }
 

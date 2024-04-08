@@ -1,6 +1,6 @@
 import "../index.css"
 
-function Display({input, result}) {
+function Display({input}) {
     return (
         <div>
             <p className="output">{input[0] > 0 ? input.join("") : "0"}</p>
