@@ -9,7 +9,7 @@ function Calculator() {
     const [input, setInput] = useState([]);
     const [currentTheme, setCurrentTheme] = useState("default");
 
-    const { backgroundColor, primaryFontColor, keypadStyle, displayStyle, buttonStyle } = themes[currentTheme]
+    const { backgroundColor, primaryFontColor, keypadStyle, displayStyle, themeToggle, buttonStyle } = themes[currentTheme]
 
     const operators = ["+", "-", "/", "x"];
     const keys = [
@@ -98,7 +98,7 @@ function Calculator() {
             <div className="wrapper">
                 <div className="titleContainer">
                     <h2 style={primaryFontColor}>calc</h2>
-                    <ToggleThemes currentTheme={currentTheme} setCurrentTheme={setCurrentTheme}/>
+                    <ToggleThemes currentTheme={currentTheme} setCurrentTheme={setCurrentTheme} style={themeToggle}/>
                 </div>
                 <div className="contentContainer">
                     <Display input={input} style={displayStyle}/>
