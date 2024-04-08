@@ -1,6 +1,9 @@
+import { useState } from "react";
 import "../index.css"
 
 function Button({value, handleClick, style}) {
+        const [hover, setHover] = useState(false)
+        const [active, setActive] = useState(false)
 
     let styleType = "primary";
 
@@ -10,14 +13,24 @@ function Button({value, handleClick, style}) {
         styleType = "tertiary";
     }
 
-    console.log(style.primary.initial);
+    // console.log(style[styleType].hover);
 
     return (
         <button 
             className="button" 
             onClick={handleClick} 
             value={value}
-            style={style[styleType].initial}
+            onMouseEnter={() => setHover(true)}
+            onMouseLeave={() => setHover(false)}
+            onMouseDown={() => setActive(true)}
+            onMouseUp={() => setActive(false)}
+            style={
+                active
+                    ? style[styleType].active
+                    : hover
+                    ? style[styleType].hover
+                    : style[styleType].initial
+            }
             >{value}
         </button>
     )

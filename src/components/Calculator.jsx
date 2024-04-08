@@ -77,11 +77,6 @@ function Calculator() {
             case "=":
                 const { exists } = checkForOperator();
                 exists ? setInput([getResult()]) : setInput(["Missing operator"])
-                try {
-                    console.log(undefinedVariable.property);
-                } catch (error) {
-                    console.error('Error:', error.message);
-                }
                 return;
 
             case "DEL":
@@ -96,8 +91,6 @@ function Calculator() {
         if (input[0] === "0") return;
 
         if (pressedKey) setInput(i => [...i, pressedKey]);
-
-        console.log("buttonstyle: ", buttonStyle);
     }
 
     return (

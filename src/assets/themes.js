@@ -16,55 +16,185 @@ export const themes = {
                 initial: {
                     backgroundColor: "#EAE3DB",
                     color: "#474C5E",
-                    borderBottom: "3px solid #B4A498"
+                    borderBottom: "2px solid #B4A498"
                 },
                 hover: {
-                    backgroundColor: "#EAE3DB",
+                    backgroundColor: "#FFF8EF",
                     color: "#474C5E",
-                    borderBottom: "3px solid #B4A498"
+                    borderBottom: "2px solid #B4A498"
                 },
                 active: {
-                    backgroundColor: "#EAE3DB",
+                    backgroundColor: "#DAD3C9",
                     color: "#474C5E",
-                    borderBottom: "3px solid #B4A498"
+                    borderBottom: "2px solid #B4A498"
                 }
             },
             secondary: {
                 initial: {
-                    backgroundColor: "#92A3D1",
+                    backgroundColor: "#7B89AB",
                     color: "#FFFFFF",
-                    borderBottom: "3px solid #414E71"
+                    borderBottom: "2px solid #414E71"
                 },
                 hover: {
-                    backgroundColor: "#EAE3DB",
-                    color: "#474C5E",
-                    borderBottom: "3px solid #B4A498"
+                    backgroundColor: "#92A3D1",
+                    color: "#FFFFFF",
+                    borderBottom: "2px solid #414E71"
                 },
                 active: {
-                    backgroundColor: "#EAE3DB",
-                    color: "#474C5E",
-                    borderBottom: "3px solid #B4A498"
+                    backgroundColor: "#7587B6",
+                    color: "#FFFFFF",
+                    borderBottom: "2px solid #414E71"
                 }
             },
             tertiary: {
                 initial: {
                     backgroundColor: "#E96454",
                     color: "#FFFFFF",
-                    borderBottom: "3px solid #91261C"
+                    borderBottom: "2px solid #831F13"
                 },
                 hover: {
-                    backgroundColor: "#EAE3DB",
-                    color: "#474C5E",
-                    borderBottom: "3px solid #B4A498"
+                    backgroundColor: "#F96C5B",
+                    color: "#FFFFFF",
+                    borderBottom: "2px solid #831F13"
                 },
                 active: {
-                    backgroundColor: "#EAE3DB",
+                    backgroundColor: "#D15B4D",
                     color: "#474C5E",
-                    borderBottom: "3px solid #B4A498"
+                    borderBottom: "2px solid #831F13"
                 }
             }
         }
     },
-    // light : {},
-    // dark : {}
+    light : {
+        backgroundColor: "#E6E6E6",
+        primaryFontColor: {
+            color: "#37372D"
+        },
+        keypadStyle: {
+            backgroundColor: "#D3CDCD"
+        },
+        displayStyle: {
+            backgroundColor: "#EEEEEE",
+            color: "#37372D" 
+        },
+        buttonStyle: {
+            primary: {
+                initial: {
+                    backgroundColor: "#E5E4E0",
+                    color: "#37372D",
+                    borderBottom: "2px solid #B4A498"
+                },
+                hover: {
+                    backgroundColor: "#FFFFFF",
+                    color: "#37372D",
+                    borderBottom: "2px solid #B4A498"
+                },
+                active: {
+                    backgroundColor: "#D4D4D0",
+                    color: "#37372D",
+                    borderBottom: "2px solid #B4A498"
+                }
+            },
+            secondary: {
+                initial: {
+                    backgroundColor: "#388187",
+                    color: "#FFFFFF",
+                    borderBottom: "2px solid #414E71"
+                },
+                hover: {
+                    backgroundColor: "#62B5BD",
+                    color: "#FFFFFF",
+                    borderBottom: "2px solid #414E71"
+                },
+                active: {
+                    backgroundColor: "#2F7075",
+                    color: "#FFFFFF",
+                    borderBottom: "2px solid #414E71"
+                }
+            },
+            tertiary: {
+                initial: {
+                    backgroundColor: "#C85401",
+                    color: "#FFFFFF",
+                    borderBottom: "2px solid #831F13"
+                },
+                hover: {
+                    backgroundColor: "#FF8B38",
+                    color: "#FFFFFF",
+                    borderBottom: "2px solid #831F13"
+                },
+                active: {
+                    backgroundColor: "#BB4E00",
+                    color: "#474C5E",
+                    borderBottom: "2px solid #831F13"
+                }
+            }
+        }
+    },
+    dark : {
+        backgroundColor: "#17062A",
+        primaryFontColor: {
+            color: "#FBE63B"
+        },
+        keypadStyle: {
+            backgroundColor: "#1E0836"
+        },
+        displayStyle: {
+            backgroundColor: "#1E0836",
+            color: "#FBE63B" 
+        },
+        buttonStyle: {
+            primary: {
+                initial: {
+                    backgroundColor: "#331B4D",
+                    color: "#FBE63B",
+                    borderBottom: "2px solid #7E2197"
+                },
+                hover: {
+                    backgroundColor: "#9628B4",
+                    color: "#FBE63B",
+                    borderBottom: "2px solid #7E2197"
+                },
+                active: {
+                    backgroundColor: "#29163F",
+                    color: "#FBE63B",
+                    borderBottom: "2px solid #7E2197"
+                }
+            },
+            secondary: {
+                initial: {
+                    backgroundColor: "#56077C",
+                    color: "#FFFFFF",
+                    borderBottom: "2px solid #BF15F4"
+                },
+                hover: {
+                    backgroundColor: "#650B90",
+                    color: "#FFFFFF",
+                    borderBottom: "2px solid #BF15F4"
+                },
+                active: {
+                    backgroundColor: "#490769",
+                    color: "#FFFFFF",
+                    borderBottom: "2px solid #BF15F4"
+                }
+            },
+            tertiary: {
+                initial: {
+                    backgroundColor: "#00DECF",
+                    color: "#000000",
+                    borderBottom: "2px solid #6DF8EF"
+                },
+                hover: {
+                    backgroundColor: "#00F1E1",
+                    color: "#000000",
+                    borderBottom: "2px solid #6DF8EF"
+                },
+                active: {
+                    backgroundColor: "#00CDBF",
+                    color: "#000000",
+                    borderBottom: "2px solid #6DF8EF"
+                }
+            }
+        }
+    }
 }
