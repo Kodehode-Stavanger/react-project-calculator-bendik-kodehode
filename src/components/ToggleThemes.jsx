@@ -4,7 +4,6 @@ import "../index.css";
 function ToggleThemes({ currentTheme, setCurrentTheme, style }) {
 
     function handleThemeChange(e) {
-        console.log(e.target.value);
         setCurrentTheme(e.target.value)
     }
 
@@ -13,14 +12,14 @@ function ToggleThemes({ currentTheme, setCurrentTheme, style }) {
             <p className="themeTitle" style={{color: style.color}}>THEME</p>
             <div className="themeContainer">
                 <div className="labelContainer">
-                    <label  htmlFor="default" style={{color: style.color}}>1</label>
+                    <label htmlFor="default" style={{color: style.color}}>1</label>
                     <label htmlFor="light" style={{color: style.color}}>2</label>
                     <label htmlFor="dark" style={{color: style.color}}>3</label>
                 </div>
-                <div className="inputContainer">
+                <div className="inputContainer" style={{backgroundColor: style.backgroundColor}}>
                     <input 
                         type="radio" 
-                        id="dark" 
+                        id="default" 
                         name="theme" 
                         value="default" 
                         checked={currentTheme === "default"}
@@ -34,7 +33,7 @@ function ToggleThemes({ currentTheme, setCurrentTheme, style }) {
                         onChange={handleThemeChange}/>
                     <input 
                         type="radio" 
-                        id="fancy" 
+                        id="dark" 
                         name="theme" 
                         value="dark"
                         checked={currentTheme === "dark"}
