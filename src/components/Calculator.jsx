@@ -54,15 +54,10 @@ function Calculator() {
         }
     }
 
-    const removeLastEntry = () => {
-        setInput(i => i.filter((_, index) => index < i.length - 1))
-    }
-
     function handleClick(e) {
         let pressedKey = e.target.value;
-
-        // Overwrite selected operator
         if (operators.includes(pressedKey)) {
+            // Overwrite selected operator
             if (operators.includes(input[input.length - 1])) {
                 setInput(prevInput => [...prevInput.slice(0, -1), pressedKey]);
                 return;
@@ -76,11 +71,12 @@ function Calculator() {
 
             case "=":
                 const { exists } = checkForOperator();
-                exists ? setInput([getResult()]) : setInput(["Missing operator"])
+                if (exists) setInput([getResult()]);
+                else console.log("Error: Invalid Operator");
                 return;
 
             case "DEL":
-                removeLastEntry();
+                setInput(i => i.filter((_, index) => index < i.length - 1))
                 return;
 
             case "RESET":
