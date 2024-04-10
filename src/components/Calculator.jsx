@@ -57,9 +57,9 @@ function Calculator() {
     function handleClick(e) {
         let pressedKey = e.target.value;
         if (operators.includes(pressedKey)) {
-            // Overwrite selected operator
+            // Overwrite if previous is operator
             if (operators.includes(input[input.length - 1])) {
-                setInput(prevInput => [...prevInput.slice(0, -1), pressedKey]);
+                setInput(i => [...i.slice(0, -1), pressedKey]);
                 return;
             }
         }
@@ -72,7 +72,6 @@ function Calculator() {
             case "=":
                 const { exists } = checkForOperator();
                 if (exists) setInput([getResult()]);
-                else console.log("Error: Invalid Operator");
                 return;
 
             case "DEL":
