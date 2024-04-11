@@ -83,8 +83,9 @@ function Calculator() {
                 return;
         }
 
-        if (input[0] === "0") return;
+        if ((pressedKey === "0" && !input.length) || (operators.includes(pressedKey) && !input.length)) return;
 
+        // Add key to input
         if (pressedKey) setInput(i => [...i, pressedKey]);
     }
 
