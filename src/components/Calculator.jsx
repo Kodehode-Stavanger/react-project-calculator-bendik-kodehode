@@ -50,6 +50,9 @@ function Calculator() {
             const operatorPos = input.findIndex(e => e === operator);
             const firstNum = input.slice(0, operatorPos).join("");
             const secondNum = input.slice((operatorPos + 1)).join("");
+            if (secondNum === "" || operatorPos === "-1") {
+                return null;
+            };
             return compute(firstNum, secondNum, operator);
         }
     }
@@ -57,9 +60,13 @@ function Calculator() {
     function handleClick(e) {
         let pressedKey = e.target.value;
         if (operators.includes(pressedKey)) {
-            // Overwrite selected operator
+            // Overwrite if previous is operator as well
+            const { exists } = checkForOperator();
             if (operators.includes(input[input.length - 1])) {
-                setInput(prevInput => [...prevInput.slice(0, -1), pressedKey]);
+                setInput(i => [...i.slice(0, -1), pressedKey]);
+                return;
+            }
+            else if (exists) {
                 return;
             }
         }
@@ -71,8 +78,11 @@ function Calculator() {
 
             case "=":
                 const { exists } = checkForOperator();
-                if (exists) setInput([getResult()]);
-                else console.log("Error: Invalid Operator");
+                if (exists) {
+                    const result = getResult();
+                    if (result) setInput(result.toString().split(""))
+                }
+                    
                 return;
 
             case "DEL":
@@ -84,8 +94,9 @@ function Calculator() {
                 return;
         }
 
-        if (input[0] === "0") return;
+        if ((pressedKey === "0" && !input.length) || (operators.includes(pressedKey) && !input.length)) return;
 
+        // Add key to input
         if (pressedKey) setInput(i => [...i, pressedKey]);
     }
 

@@ -6,12 +6,19 @@
 }
 
 .backgroundContainer {
-    background-color: red;
     width: 100vw;
     min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin: 0 30px;
+    max-width: 450px;
 }
 
 .keypad {
@@ -131,4 +138,28 @@
 
 .labelContainer label {
     font-size: 12px;
+}
+
+/* ------------------------------ MEDIA QUERIES ------------------------------ */
+
+@media (max-width: 425px) {
+    .keypad {
+        gap: 15px
+    }
+
+    .button {
+        padding: 20px 5px 10px 5px;
+    }
+}
+
+@media (max-width: 375px) {
+    .wrapper {
+        margin: 0 10px;
+    }
+}
+
+@media (max-width: 320px) {
+    .keypad {
+        gap: 10px;
+    }
 }
