@@ -51,7 +51,6 @@ function Calculator() {
             const firstNum = input.slice(0, operatorPos).join("");
             const secondNum = input.slice((operatorPos + 1)).join("");
             if (secondNum === "" || operatorPos === "-1") {
-                console.log("getResult NULL");
                 return null;
             };
             return compute(firstNum, secondNum, operator);
@@ -61,7 +60,7 @@ function Calculator() {
     function handleClick(e) {
         let pressedKey = e.target.value;
         if (operators.includes(pressedKey)) {
-            // Overwrite if previous is operator
+            // Overwrite if previous is operator as well
             const { exists } = checkForOperator();
             if (operators.includes(input[input.length - 1])) {
                 setInput(i => [...i.slice(0, -1), pressedKey]);

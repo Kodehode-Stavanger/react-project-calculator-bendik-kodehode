@@ -44,11 +44,13 @@ export const themes = {
                     backgroundColor: "#92A3D1",
                     color: "#FFFFFF",
                     borderBottom: "3px solid #414E71"
+
                 },
                 active: {
                     backgroundColor: "#7587B6",
                     color: "#FFFFFF",
                     borderBottom: "3px solid #414E71"
+
                 }
             },
             tertiary: {
