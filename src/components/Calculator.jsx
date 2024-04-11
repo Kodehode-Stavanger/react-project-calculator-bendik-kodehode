@@ -50,6 +50,10 @@ function Calculator() {
             const operatorPos = input.findIndex(e => e === operator);
             const firstNum = input.slice(0, operatorPos).join("");
             const secondNum = input.slice((operatorPos + 1)).join("");
+            if (secondNum === "" || operatorPos === "-1") {
+                console.log("getResult NULL");
+                return null;
+            };
             return compute(firstNum, secondNum, operator);
         }
     }
@@ -71,7 +75,11 @@ function Calculator() {
 
             case "=":
                 const { exists } = checkForOperator();
-                if (exists) setInput([getResult()]);
+                if (exists) {
+                    const result = getResult();
+                    if (result) setInput(result.toString().split(""))
+                }
+                    
                 return;
 
             case "DEL":
