@@ -1,0 +1,165 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "League Spartan", sans-serif;
+}
+
+.backgroundContainer {
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin: 0 30px;
+    max-width: 450px;
+}
+
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 20px;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.keypad :nth-last-child(2) {
+    grid-column: 1 / span 2;
+}
+
+.keypad :nth-last-child(1) {
+    grid-column: 3 / span 2;
+}
+
+.titleContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.button {
+    padding: 20px 20px 10px 20px ;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    user-select: none;
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.outputContainer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px 25px 15px 25px;
+    border-radius: 10px;
+}
+
+.contentContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 15px;
+}
+
+.themeContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.themeWrapper {
+    display: flex;
+    align-items: flex-end;
+    gap: 15px;
+}
+
+.themeTitle {
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.outputText {
+    font-size: 48px;
+    font-weight: 700;
+    max-width: 400px;
+    overflow: hidden;
+}
+
+.inputContainer {
+    display: flex;
+    justify-content: space-evenly;
+    border-radius: 10px;
+    padding: 5px;
+    gap: 10px;
+}
+
+.inputContainer input[type=radio] {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputContainer input[type=radio]:not(:checked) {
+    opacity: 0;
+}
+
+.inputContainer input[type=radio]:checked::before {
+    content: "";
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    cursor: default;
+}
+
+#default::before {
+    background-color: #E96454;
+}
+
+#light::before {
+    background-color: #C85401;
+}
+
+#dark::before {
+    background-color: #00DECF;
+}
+
+.labelContainer {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 10px;
+}
+
+.labelContainer label {
+    font-size: 12px;
+}
+
+/* ------------------------------ MEDIA QUERIES ------------------------------ */
+
+@media (max-width: 425px) {
+    .keypad {
+        gap: 15px
+    }
+
+    .button {
+        padding: 20px 5px 10px 5px;
+    }
+}
+
+@media (max-width: 375px) {
+    .wrapper {
+        margin: 0 10px;
+    }
+}
+
+@media (max-width: 320px) {
+    .keypad {
+        gap: 10px;
+    }
+}
